@@ -4,5 +4,5 @@ import Hero from "./components/Hero.vue";
 </script>
 <template>
   <NavBar />
-  <Hero />
+  <Hero title="Find Your Dream Job" />
 </template>
