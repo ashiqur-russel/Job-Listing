@@ -1,4 +1,6 @@
 import Home from "@/views/Home.vue";
+import Jobs from "@/views/Jobs.vue";
+
 import { createRouter, createWebHistory } from "vue-router";
 
 const router = createRouter({
@@ -8,6 +10,11 @@ const router = createRouter({
       path: "/",
       name: "home",
       component: Home,
+    },
+    {
+      path: "/jobs",
+      name: "jobs",
+      component: Jobs,
     },
   ],
 });
