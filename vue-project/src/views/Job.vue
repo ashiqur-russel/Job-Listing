@@ -1,4 +1,5 @@
 <script setup>
+import BackButton from "@/components/BackButton.vue";
 import axios from "axios";
 import { onMounted, reactive } from "vue";
 import { useRoute, useRouter } from "vue-router";
@@ -16,7 +17,7 @@ const state = reactive({
 
 onMounted(async () => {
   try {
-    const response = await axios.get(`http://localhost:5000/jobs/${jobId}`);
+    const response = await axios.get(`/api/jobs/${jobId}`);
     state.job = response.data;
   } catch (error) {
     console.error("Error while loading data:", error);
@@ -26,6 +27,7 @@ onMounted(async () => {
 });
 </script>
 <template>
+  <BackButton />
   <section v-if="!state.isLoading" class="bg-green-50">
     <div class="container m-auto py-10 px-6">
       <div class="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
@@ -47,10 +49,10 @@ onMounted(async () => {
 
           <div class="bg-white p-6 rounded-lg shadow-md mt-6">
             <h3 class="text-green-800 text-lg font-bold mb-6">
-              {{ state.job.title }}
+              Job Description
             </h3>
 
-            <p class="mb-4">Job Description</p>
+            <p class="mb-4">{{ state.job.description }}</p>
 
             <h3 class="text-green-800 text-lg font-bold mb-2">Salary</h3>
 
