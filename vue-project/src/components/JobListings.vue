@@ -39,7 +39,7 @@ onMounted(async () => {
         <PulseLoader />
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div v-else class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <JobListing
           v-for="job in state.jobs.slice(0, limit || state.jobs.length)"
           :key="job.id"
