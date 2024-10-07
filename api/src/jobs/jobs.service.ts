@@ -15,4 +15,8 @@ export class JobsService {
     const newJob = new this.jobModel(createJobDto);
     return newJob.save();
   }
+
+  getAllJobs() {
+    return this.jobModel.find();
+  }
 }
