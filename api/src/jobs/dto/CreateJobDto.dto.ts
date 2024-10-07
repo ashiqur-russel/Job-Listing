@@ -1,5 +1,23 @@
 import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
 
+class CompanyDto {
+  @IsNotEmpty()
+  @IsString()
+  name: string;
+
+  @IsNotEmpty()
+  @IsString()
+  description: string;
+
+  @IsNotEmpty()
+  @IsEmail()
+  contactEmail: string;
+
+  @IsNotEmpty()
+  @IsString()
+  contactPhone: string;
+}
+
 export class CreateJobDto {
   @IsNotEmpty()
   @IsString()
@@ -22,18 +40,5 @@ export class CreateJobDto {
   salary: string;
 
   @IsNotEmpty()
-  @IsString()
-  companyName: string;
-
-  @IsNotEmpty()
-  @IsString()
-  companyDescription: string;
-
-  @IsNotEmpty()
-  @IsEmail()
-  companyContactEmail: string;
-
-  @IsNotEmpty()
-  @IsString()
-  companyContactPhone: string;
+  company: CompanyDto;
 }
