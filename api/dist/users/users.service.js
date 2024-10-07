@@ -25,6 +25,12 @@ let UsersService = class UsersService {
         const newUser = new this.userModel(createUserDto);
         return newUser.save();
     }
+    getUsers() {
+        return this.userModel.find();
+    }
+    getUserById(id) {
+        return this.userModel.findById(id);
+    }
 };
 UsersService = __decorate([
     (0, common_1.Injectable)(),

@@ -34,4 +34,19 @@ export declare class UsersController {
     } & {
         __v?: number;
     }>;
+    getAllUsers(): import("mongoose").Query<(import("mongoose").Document<unknown, {}, import("../schemas/User.schema").User> & import("../schemas/User.schema").User & {
+        _id: import("mongoose").Types.ObjectId;
+    } & {
+        __v?: number;
+    })[], import("mongoose").Document<unknown, {}, import("../schemas/User.schema").User> & import("../schemas/User.schema").User & {
+        _id: import("mongoose").Types.ObjectId;
+    } & {
+        __v?: number;
+    }, {}, import("../schemas/User.schema").User, "find", {}>;
+    getUserById(id: string): Promise<import("mongoose").Document<unknown, {}, import("../schemas/User.schema").User> & import("../schemas/User.schema").User & {
+        _id: import("mongoose").Types.ObjectId;
+    } & {
+        __v?: number;
+    }>;
+    deleteUserbyId(id: string): void;
 }

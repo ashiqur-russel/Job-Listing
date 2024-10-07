@@ -34,4 +34,22 @@ export declare class UsersService {
     } & {
         __v?: number;
     }>;
+    getUsers(): import("mongoose").Query<(import("mongoose").Document<unknown, {}, User> & User & {
+        _id: import("mongoose").Types.ObjectId;
+    } & {
+        __v?: number;
+    })[], import("mongoose").Document<unknown, {}, User> & User & {
+        _id: import("mongoose").Types.ObjectId;
+    } & {
+        __v?: number;
+    }, {}, User, "find", {}>;
+    getUserById(id: string): import("mongoose").Query<import("mongoose").Document<unknown, {}, User> & User & {
+        _id: import("mongoose").Types.ObjectId;
+    } & {
+        __v?: number;
+    }, import("mongoose").Document<unknown, {}, User> & User & {
+        _id: import("mongoose").Types.ObjectId;
+    } & {
+        __v?: number;
+    }, {}, User, "findOne", {}>;
 }
