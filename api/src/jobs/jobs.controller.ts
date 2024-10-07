@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { JobDocument } from 'src/schemas/Job.schema';
 import { CreateJobDto } from './dto/CreateJobDto.dto';
 import { JobsService } from './jobs.service';
 
@@ -16,5 +17,12 @@ export class JobController {
   getAllJobs() {
     console.info('Accessing `/jobs`');
     return this.jobsSerive.getAllJobs();
+  }
+
+  @Get(':id')
+  getJobById(@Param('id') id: string): Promise<JobDocument> {
+    console.info('Accessing `/jobs/:id`');
+
+    return this.jobsSerive.getJobById(id);
   }
 }
