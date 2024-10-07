@@ -18,6 +18,10 @@ __decorate([
     __metadata("design:type", String)
 ], User.prototype, "userName", void 0);
 __decorate([
+    (0, mongoose_1.Prop)({ type: String, enum: ['employer', 'employee'], required: true }),
+    __metadata("design:type", String)
+], User.prototype, "role", void 0);
+__decorate([
     (0, mongoose_1.Prop)({ required: false }),
     __metadata("design:type", String)
 ], User.prototype, "displayName", void 0);
