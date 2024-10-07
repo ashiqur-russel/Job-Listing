@@ -6,23 +6,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AppModule = void 0;
+exports.UserModule = void 0;
 const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
-const app_controller_1 = require("./app.controller");
-const app_service_1 = require("./app.service");
-const users_module_1 = require("./users/users.module");
-let AppModule = class AppModule {
+const User_schema_1 = require("../schemas/User.schema");
+const users_controller_1 = require("./users.controller");
+const users_service_1 = require("./users.service");
+let UserModule = class UserModule {
 };
-AppModule = __decorate([
+UserModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            mongoose_1.MongooseModule.forRoot('mongodb://localhost/myjob_portal'),
-            users_module_1.UserModule,
+            mongoose_1.MongooseModule.forFeature([
+                {
+                    name: User_schema_1.User.name,
+                    schema: User_schema_1.UserSchema,
+                },
+            ]),
         ],
-        controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService],
+        providers: [users_service_1.UsersService],
+        controllers: [users_controller_1.UsersController],
     })
-], AppModule);
-exports.AppModule = AppModule;
-//# sourceMappingURL=app.module.js.map
+], UserModule);
+exports.UserModule = UserModule;
+//# sourceMappingURL=users.module.js.map
