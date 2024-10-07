@@ -1,14 +1,14 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
-export type role = 'employer' | 'employee';
+export type Role = 'employer' | 'employee';
 
 @Schema()
 export class User {
   @Prop({ unique: true, required: true })
   userName: string;
 
-  @Prop({ required: true })
-  role: role;
+  @Prop({ type: String, enum: ['employer', 'employee'], required: true })
+  role: Role;
 
   @Prop({ required: false })
   displayName?: string;

@@ -11,6 +11,7 @@ const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
+const jobs_module_1 = require("./jobs/jobs.module");
 const users_module_1 = require("./users/users.module");
 let AppModule = class AppModule {
 };
@@ -19,6 +20,7 @@ AppModule = __decorate([
         imports: [
             mongoose_1.MongooseModule.forRoot('mongodb://localhost/myjob_portal'),
             users_module_1.UserModule,
+            jobs_module_1.JobModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
