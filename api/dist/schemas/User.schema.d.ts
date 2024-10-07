@@ -24,8 +24,10 @@
 /// <reference types="mongoose" />
 /// <reference types="mongoose/types/inferschematype" />
 /// <reference types="mongoose/types/inferrawdoctype" />
+export type role = 'employer' | 'employee';
 export declare class User {
     userName: string;
+    role: role;
     displayName?: string;
     avatarUrl?: string;
 }
