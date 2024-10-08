@@ -43,7 +43,7 @@ const handleSubmit = async () => {
   };
 
   try {
-    const response = await axios.put(`/jobs/${jobId}`, updatedJob);
+    const response = await axios.put(`/api/jobs/${jobId}`, updatedJob);
     router.push(`/jobs/${response.data._id}`);
   } catch (error) {
     console.error("Error fetching job", error);
@@ -52,7 +52,7 @@ const handleSubmit = async () => {
 
 onMounted(async () => {
   try {
-    const response = await axios.get(`/jobs/${jobId}`);
+    const response = await axios.get(`/api/jobs/${jobId}`);
     state.job = response.data;
     // Populate inputs
     form.type = state.job.type;
