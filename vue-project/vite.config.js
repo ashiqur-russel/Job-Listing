@@ -11,7 +11,7 @@ export default ({ mode }) => {
       port: 3000,
       proxy: {
         "/api": {
-          target: env.VITE_SERVER_API || "http://localhost:5000",
+          target: env.VITE_SERVER_API,
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, ""),
         },
