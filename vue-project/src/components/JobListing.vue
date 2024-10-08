@@ -5,7 +5,6 @@ const props = defineProps({
   job: Object,
 });
 
-console.log(props.job);
 const showFullDescription = ref(false);
 const desc = computed(() => {
   let description = props.job.description;
