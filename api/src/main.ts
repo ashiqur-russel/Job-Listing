@@ -28,5 +28,4 @@ async function bootstrap() {
 
 bootstrap();
 
-// For serverless deployment (like Vercel), export the serverless handler
 export const handler: Handler = serverless(expressApp);
