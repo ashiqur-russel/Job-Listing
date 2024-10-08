@@ -3,7 +3,7 @@ import { JobDocument } from '../schemas/Job.schema';
 import { CreateJobDto } from './dto/CreateJobDto.dto';
 import { JobsService } from './jobs.service';
 
-@Controller('/api/jobs')
+@Controller('jobs')
 export class JobController {
   constructor(private jobsSerive: JobsService) {}
 
