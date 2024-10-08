@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { JobDocument } from 'src/schemas/Job.schema';
+import { JobDocument } from '../schemas/Job.schema';
 import { CreateJobDto } from './dto/CreateJobDto.dto';
 import { JobsService } from './jobs.service';
 

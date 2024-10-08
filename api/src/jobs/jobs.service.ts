@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Job, JobDocument } from 'src/schemas/Job.schema';
+import { Job, JobDocument } from '../schemas/Job.schema';
 import { CreateJobDto } from './dto/CreateJobDto.dto';
 
 @Injectable()
