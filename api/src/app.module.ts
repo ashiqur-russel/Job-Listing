@@ -5,10 +5,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { JobModule } from './jobs/jobs.module';
 import { UserModule } from './users/users.module';
+import * as dotenv from 'dotenv';
+
+dotenv.config();
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
+    /*ConfigModule.forRoot({
       isGlobal: true,
     }),
     MongooseModule.forRootAsync({
@@ -17,7 +20,10 @@ import { UserModule } from './users/users.module';
         uri: configService.get<string>('MONGODB_URI'),
       }),
       inject: [ConfigService],
-    }),
+    }),*/
+
+    MongooseModule.forRoot(process.env.MONGODB_URI),
+
     UserModule,
     JobModule,
   ],
