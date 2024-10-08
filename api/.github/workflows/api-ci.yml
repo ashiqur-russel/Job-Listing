@@ -1,0 +1,37 @@
+name: NestJS API CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18' # Use the Node.js version you are working with
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./api
+
+      - name: Run tests
+        run: npm run test
+        working-directory: ./api
+
+      - name: Build the API
+        run: npm run build
+        working-directory: ./api
+
+      - name: Deploy to production
+        run: |
+          # Add your deployment script here, for example:
+          # scp -r ./api/dist/ user@server:/path/to/production
+        if: github.ref == 'refs/heads/main'
