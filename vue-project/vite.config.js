@@ -9,13 +9,6 @@ export default ({ mode }) => {
     plugins: [vue()],
     server: {
       port: 3000,
-      proxy: {
-        "/api": {
-          target: env.VITE_SERVER_API,
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ""),
-        },
-      },
     },
     resolve: {
       alias: {

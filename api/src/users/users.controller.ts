@@ -44,16 +44,31 @@ export class UsersController {
 
   @Patch(':id')
   @UsePipes(new ValidationPipe())
-  updateUserbyId(@Param('id') id: string, @Body() userDto: UpdateUserDto) {
+  async updateUserbyId(
+    @Param('id') id: string,
+    @Body() userDto: UpdateUserDto,
+  ) {
     const isValidId = mongoose.Types.ObjectId.isValid(id);
     if (!isValidId)
       throw new HttpException('Update request for invalid user id', 404);
 
-    return this.usersService.updateUserById(id, userDto);
+    const updatedUser = await this.usersService.updateUserById(id, userDto);
+
+    if (!updatedUser) throw new HttpException('User not found!', 404);
+
+    return updatedUser;
   }
 
   @Delete(':id')
-  deleteUserbyId(@Param('id') id: string) {
-    console.log(id);
+  async deleteUserbyId(@Param('id') id: string) {
+    //TODO: Have to make middleware for checking valid id
+    const isValidId = mongoose.Types.ObjectId.isValid(id);
+    if (!isValidId)
+      throw new HttpException('Update request for invalid user id', 404);
+    const deletedUser = await this.usersService.deleteUserbyId(id);
+
+    if (!deletedUser) throw new HttpException('User not found', 404);
+
+    return deletedUser;
   }
 }
