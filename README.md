@@ -24,19 +24,19 @@ This API currently consists of two main modules:
 
 #### User Module (`/users`)
 
-- **POST `/create-user`**: Creates a new user profile. Validates the request body using the `CreateUserDto`.
+- **POST `/create-user`**: Creates a new user profile.
 - **GET `/get-users`**: Retrieves a list of all registered users.
-- **GET `/:id`**: Retrieves a specific user by their ID. Returns a 404 error if the ID is invalid or if the user is not found.
-- **PATCH `/:id`**: Updates a specific user's profile. The request body must match the `UpdateUserDto`. Returns a 404 error if the ID is invalid or if the user is not found.
-- **DELETE `/:id`**: Deletes a user profile by their ID. Returns a 404 error if the ID is invalid or if the user is not found.
+- **GET `/:id`**: Retrieves a specific user by their ID.
+- **PATCH `/:id`**: Updates a specific user's profile.
+- **DELETE `/:id`**: Deletes a user profile by their ID.
 
 #### Job Module (`/jobs`)
 
-- **POST `/add`**: Creates a new job listing. The request body must match the `CreateJobDto`.
+- **POST `/add`**: Creates a new job listing.
 - **GET `/`**: Retrieves a list of all job postings.
 - **GET `/:id`**: Retrieves a specific job listing by its ID.
-- **PATCH `/:id`**: Updates a specific job listing. The request body must match the `UpdateJobDto`. Returns a 404 error if the ID is invalid or if the job is not found.
-- **DELETE `/:id`**: Deletes a job listing by its ID. Returns a confirmation message upon successful deletion or a 404 error if the ID is invalid.
+- **PATCH `/:id`**: Updates a specific job listing.
+- **DELETE `/:id`**: Deletes a job listing by its ID.
 
 ## 🚀 Future Enhancements
 
