@@ -20,7 +20,11 @@ export class JobsService {
     return this.jobModel.find();
   }
 
-  getJobById(id): Promise<JobDocument> {
+  getJobById(id: string): Promise<JobDocument> {
     return this.jobModel.findById(id);
+  }
+
+  updateJobListById(id: string, updateJobDto: any): Promise<JobDocument> {
+    return this.jobModel.findByIdAndUpdate(id, updateJobDto, { new: true });
   }
 }

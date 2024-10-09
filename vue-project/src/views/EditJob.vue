@@ -43,7 +43,8 @@ const handleSubmit = async () => {
   };
 
   try {
-    const response = await axios.put(`/jobs/${jobId}`, updatedJob);
+    const response = await axios.patch(`/jobs/${jobId}`, updatedJob);
+    console.log(response);
     router.push(`/jobs/${response.data._id}`);
   } catch (error) {
     console.error("Error fetching job", error);
