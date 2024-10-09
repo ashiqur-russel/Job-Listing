@@ -18,38 +18,42 @@ const toggleFullDescription = () => {
   showFullDescription.value = !showFullDescription.value;
 };
 </script>
+
 <template>
-  <div class="bg-white rounded-xl shadow-md relative">
-    <div class="p-4">
-      <div class="mb-6">
-        <div class="text-gray-600 my-2">{{ job.type }}</div>
-        <h3 class="text-xl font-bold">{{ job.title }}</h3>
+  <div
+    class="bg-gray-800 text-gray-300 rounded-lg shadow-lg relative hover:shadow-xl transition-shadow duration-300"
+  >
+    <div class="p-6">
+      <div class="mb-4">
+        <div class="text-gray-400 text-sm mb-1">{{ job.type }}</div>
+        <h3 class="text-2xl font-bold text-white">{{ job.title }}</h3>
       </div>
 
       <div class="mb-5">
-        <div>
-          {{ desc }}
-        </div>
+        <div>{{ desc }}</div>
         <button
           @click="toggleFullDescription"
-          class="text-green-500 hover:text-green-600 mb-5"
+          class="text-blue-400 hover:text-blue-300 focus:outline-none"
         >
           {{ showFullDescription ? "Less" : "More" }}
         </button>
       </div>
 
-      <h3 class="text-green-500 mb-2">{{ job.salary }}</h3>
+      <h3 class="text-blue-400 mb-2 text-lg font-semibold">{{ job.salary }}</h3>
 
-      <div class="border border-gray-100 mb-5"></div>
+      <div class="border-t border-gray-700 mb-5"></div>
 
-      <div class="flex flex-col lg:flex-row justify-between mb-4">
-        <div class="text-orange-700 mb-3">
-          <i class="pi pi-map-marker text-orange-600 text-lg"></i>
+      <div
+        class="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0"
+      >
+        <div class="text-orange-400 flex items-center">
+          <i class="pi pi-map-marker text-orange-500 text-lg mr-2"></i>
           {{ job.location }}
         </div>
+
         <RouterLink
           :to="'/jobs/' + job._id"
-          class="h-[36px] bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-center text-sm"
+          class="h-[40px] bg-green-900 text-center hover:bg-green-500 text-white px-6 py-2 rounded-lg text-sm font-medium"
         >
           Read More
         </RouterLink>
