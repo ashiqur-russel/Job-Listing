@@ -1,5 +1,5 @@
 <script setup>
-import axios from "axios";
+import axios from "@/axios";
 import { defineProps, onMounted, reactive } from "vue";
 import { RouterLink } from "vue-router";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
@@ -19,7 +19,11 @@ const state = reactive({
 
 onMounted(async () => {
   try {
+    const response1 = await axios.get("/jobs");
+    console.log(response1);
     const response = await axios.get("/api/jobs");
+    console.log(response);
+
     state.jobs = response.data;
   } catch (error) {
     console.error("Error while loading data:", error);
