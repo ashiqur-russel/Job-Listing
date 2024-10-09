@@ -1,6 +1,6 @@
 <script setup>
 import BackButton from "@/components/BackButton.vue";
-import axios from "axios";
+import axios from "@/axios";
 import { onMounted, reactive } from "vue";
 import { RouterLink, useRoute, useRouter } from "vue-router";
 import PulseLoader from "vue-spinner/src/PulseLoader.vue";
@@ -19,7 +19,7 @@ const deleteJob = async () => {
   try {
     const confirm = window.confirm("Are you sure to delete the job ?");
     if (confirm) {
-      await axios.delete(`/api/jobs/${jobId}`);
+      await axios.delete(`/jobs/${jobId}`);
       router.push("/jobs");
     }
   } catch (error) {
@@ -29,7 +29,7 @@ const deleteJob = async () => {
 
 onMounted(async () => {
   try {
-    const response = await axios.get(`/api/jobs/${jobId}`);
+    const response = await axios.get(`/jobs/${jobId}`);
     console.log(response);
     state.job = response.data;
   } catch (error) {
