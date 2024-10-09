@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpException,
   Param,
@@ -11,6 +12,7 @@ import { JobDocument } from '../schemas/Job.schema';
 import { CreateJobDto } from './dto/CreateJobDto.dto';
 import { JobsService } from './jobs.service';
 import mongoose from 'mongoose';
+import { UpdateJobDto } from './dto/UpdateJobDto.dto';
 
 @Controller('jobs')
 export class JobController {
@@ -38,7 +40,7 @@ export class JobController {
   @Patch(':id')
   async updateJobListById(
     @Param('id') id: string,
-    @Body() updateJobDto: any,
+    @Body() updateJobDto: UpdateJobDto,
   ): Promise<JobDocument> {
     console.info("Accessing '/jobs/edit/:id'");
 
@@ -53,5 +55,19 @@ export class JobController {
     if (!updatedJob) throw new HttpException('Job not found', 404);
 
     return updatedJob;
+  }
+
+  @Delete(':id')
+  async deleteUserbyId(@Param('id') id: string) {
+    console.info("Accessing '/jobs/delete/:id'");
+
+    const isValidId = mongoose.Types.ObjectId.isValid(id);
+    if (!isValidId) {
+      throw new HttpException('Invalid Job id', 404);
+    }
+
+    await this.jobsService.deleteJobById(id);
+
+    return { message: 'Job successfully deleted' };
   }
 }
