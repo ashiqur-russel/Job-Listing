@@ -9,10 +9,7 @@ dotenv.config();
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
-  const allowedOrigins = [
-    process.env.FRONTEND_URL,
-    process.env.FRONTEND_URL_PRODUCTION,
-  ].filter(Boolean);
+  const allowedOrigins = ['https://find-job-eight.vercel.app'].filter(Boolean);
 
   app.enableCors({
     origin: allowedOrigins,
