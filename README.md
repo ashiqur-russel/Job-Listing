@@ -1,5 +1,17 @@
 
-# Job Management System ![Vue.js](https://img.shields.io/badge/Vue.js-4FC08D?style=flat&logo=vue.js&logoColor=white) ![NestJS](https://img.shields.io/badge/NestJS-EB3C00?style=flat&logo=nestjs&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white) ![Mongoose](https://img.shields.io/badge/Mongoose-880000?style=flat&logo=mongoose&logoColor=white) ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)
+
+<h1 align="center"><strong>Job Management System</strong></h1>
+
+
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Vue.js-4FC08D?style=flat&logo=vue.js&logoColor=white" alt="Vue.js">
+  <img src="https://img.shields.io/badge/NestJS-EB3C00?style=flat&logo=nestjs&logoColor=white" alt="NestJS">
+  <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white" alt="MongoDB">
+  <img src="https://img.shields.io/badge/Mongoose-880000?style=flat&logo=mongoose&logoColor=white" alt="Mongoose">
+  <img src="https://img.shields.io/badge/Tailwind%20CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
+</p>
+
 
 Welcome to the **Job Management System**! This web application is designed to simplify the process of job listing and management for both job seekers and employers. Users can easily create, update, and delete job listings while exploring various opportunities in a user-friendly interface. API is built using **NestJS** and is designed to manage job listings and user profiles effectively. It provides a RESTful interface to handle user and job data, with clear routes for creating, updating, retrieving, and deleting records.
 
