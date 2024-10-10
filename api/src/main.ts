@@ -13,6 +13,22 @@ async function bootstrap() {
     process.env.FRONTEND_URL_PRODUCTION,
   ].filter(Boolean);
 
+  app.use((req, res, next) => {
+    res.header(
+      'Access-Control-Allow-Origin',
+      'https://find-job-eight.vercel.app',
+    );
+    res.header(
+      'Access-Control-Allow-Methods',
+      'GET,HEAD,PUT,PATCH,POST,DELETE',
+    );
+    res.header(
+      'Access-Control-Allow-Headers',
+      'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+    );
+    next();
+  });
+
   app.enableCors({
     origin: allowedOrigins,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
