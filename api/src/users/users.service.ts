@@ -12,13 +12,38 @@ export class UsersService {
     private userModel: Model<User>,
   ) {}
 
-  createUser(createUserDto: CreateUserDto) {
+  async createUser(createUserDto: CreateUserDto) {
+    if (!createUserDto.email || !createUserDto.password) {
+      throw new Error('Email and password must be provided.');
+    }
+
+    const existingUser = await this.findUserByEmail(createUserDto.email);
+    const existingUserName = await this.findUserName(createUserDto.userName);
+
+    if (existingUser) {
+      throw new Error('User already exists with this email.');
+    }
+
+    if (existingUserName) {
+      throw new Error('Username already taken.');
+    }
+
     const newUser = new this.userModel(createUserDto);
-    return newUser.save();
+    await newUser.save();
+
+    return newUser;
   }
 
   getUsers() {
     return this.userModel.find();
+  }
+
+  async findUserByEmail(email: string) {
+    return await this.userModel.findOne({ email: email }).exec();
+  }
+
+  async findUserName(userName: string) {
+    return await this.userModel.findOne({ userName: userName }).exec();
   }
 
   getUserById(id: string) {
