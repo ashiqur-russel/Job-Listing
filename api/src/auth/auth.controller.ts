@@ -8,7 +8,7 @@ import {
   HttpException,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { CreateUserDto } from 'src/users/dto/CreateUser.dto';
+import { CreateUserDto } from '../users/dto/CreateUser.dto';
 import { LoginDto } from './dto/loginDto.dto';
 
 @Controller('auth')
