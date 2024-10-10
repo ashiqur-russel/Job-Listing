@@ -1,4 +1,5 @@
 import {
+  IsEmail,
   IsEnum,
   IsNotEmpty,
   IsOptional,
@@ -10,6 +11,7 @@ import {
 export enum ROLE {
   EMPLOYER = 'employer',
   EMPLOYEE = 'employee',
+  ADMIN = 'admin',
 }
 export class CreateUserDto {
   @IsString()
@@ -19,6 +21,24 @@ export class CreateUserDto {
 
   @IsEnum(ROLE)
   role: string;
+
+  @IsOptional()
+  @IsString()
+  firstName?: string;
+
+  @IsOptional()
+  @IsString()
+  lastName?: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @Length(5, 20)
+  password: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @IsEmail({}, { message: 'Invalid email format' })
+  email: string;
 
   @IsOptional()
   @IsString()
