@@ -1,19 +1,15 @@
 import {
   Controller,
-  Get,
   Post,
   Body,
-  Patch,
-  Param,
-  Delete,
   UsePipes,
   ValidationPipe,
   HttpStatus,
   HttpException,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { SignUpDto } from './dto/signUpDto.dto';
 import { CreateUserDto } from 'src/users/dto/CreateUser.dto';
+import { LoginDto } from './dto/loginDto.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -26,6 +22,17 @@ export class AuthController {
     try {
       const user = await this.authService.signUp(createUserDto);
       return user;
+    } catch (error) {
+      throw new HttpException(error.message, HttpStatus.BAD_REQUEST);
+    }
+  }
+
+  @Post('login')
+  @UsePipes(new ValidationPipe())
+  async signIn(@Body() credential: LoginDto) {
+    console.info('Accessing to POST /auth/login');
+    try {
+      return await this.authService.signIn(credential);
     } catch (error) {
       throw new HttpException(error.message, HttpStatus.BAD_REQUEST);
     }
