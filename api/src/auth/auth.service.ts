@@ -1,5 +1,4 @@
-import { Inject, Injectable, UnauthorizedException } from '@nestjs/common';
-import { SignUpDto } from './dto/signUpDto.dto';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UsersService } from '../users/users.service';
 import { CreateUserDto } from '../users/dto/CreateUser.dto';
 import { LoginDto } from './dto/loginDto.dto';
@@ -7,7 +6,7 @@ import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { InjectModel } from '@nestjs/mongoose';
 import { RefreshToken } from './schemas/refreshToken.schema';
-import { Model } from 'mongoose';
+import mongoose, { Model } from 'mongoose';
 import { v4 as uuidv4 } from 'uuid';
 
 @Injectable()
@@ -38,28 +37,43 @@ export class AuthService {
       throw new UnauthorizedException('Wrong Password!');
     }
 
-    const userId = user._id.toString();
-    const { accessToken, refreshToken } = await this.generateUserToken(userId);
-
-    await this.storeRefreshToken(refreshToken, userId);
+    const userId = user._id;
+    const tokens = await this.generateUserToken(userId);
 
     return {
       success: true,
-      user: user._id,
-      accessToken: accessToken,
-      refreshToken: refreshToken,
+      userId: userId,
+      ...tokens,
     };
   }
 
-  async generateUserToken(userId: string) {
-    const accessToken = this.jwtService.sign({ userId });
-    const refreshToken = uuidv4();
-    return { accessToken, refreshToken };
-  }
-
-  async storeRefreshToken(token: string, userId: string) {
+  async storeRefreshToken(token: string, userId: mongoose.Types.ObjectId) {
     const expireDate = new Date();
     expireDate.setDate(expireDate.getDate() + 3);
+
     await this.RefreshTokenModel.create({ token, userId, expireDate });
+  }
+
+  async refreshTokens(refreshToken: string) {
+    const token = await this.RefreshTokenModel.findOneAndDelete({
+      token: refreshToken,
+      expireDate: { $gte: new Date() },
+    });
+
+    if (!token) {
+      throw new UnauthorizedException('Invalid Refresh Token');
+    }
+
+    const newTokens = await this.generateUserToken(token.userId.toString());
+    return newTokens;
+  }
+
+  async generateUserToken(userId) {
+    const accessToken = await this.jwtService.sign({ userId });
+    const refreshToken = uuidv4();
+
+    await this.storeRefreshToken(refreshToken, userId);
+
+    return { accessToken, refreshToken };
   }
 }

@@ -10,6 +10,7 @@ import {
 import { AuthService } from './auth.service';
 import { CreateUserDto } from '../users/dto/CreateUser.dto';
 import { LoginDto } from './dto/loginDto.dto';
+import { RefreshTokenDto } from './dto/refreshTokenDto.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -36,5 +37,13 @@ export class AuthController {
     } catch (error) {
       throw new HttpException(error.message, HttpStatus.BAD_REQUEST);
     }
+  }
+
+  @Post('refresh')
+  @UsePipes(new ValidationPipe())
+  async refreshTokens(@Body() refreshTokenDto: RefreshTokenDto) {
+    console.info('Accessing to POST /auth/refresh');
+
+    return this.authService.refreshTokens(refreshTokenDto.refreshToken);
   }
 }

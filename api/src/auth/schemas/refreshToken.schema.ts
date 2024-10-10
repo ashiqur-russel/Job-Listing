@@ -1,8 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import mongoose, { Document } from 'mongoose';
+import mongoose from 'mongoose';
 
 @Schema({ versionKey: false, timestamps: true })
-export class RefreshToken extends Document {
+export class RefreshToken {
   @Prop({ required: true })
   token: string;
 
