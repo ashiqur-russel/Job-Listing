@@ -5,6 +5,7 @@
 
 
 <p align="center">
+    <img src="https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white" alt="TypeScript">
   <img src="https://img.shields.io/badge/Vue.js-4FC08D?style=flat&logo=vue.js&logoColor=white" alt="Vue.js">
   <img src="https://img.shields.io/badge/NestJS-EB3C00?style=flat&logo=nestjs&logoColor=white" alt="NestJS">
   <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white" alt="MongoDB">
