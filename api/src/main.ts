@@ -11,7 +11,7 @@ async function bootstrap() {
   const allowedOrigins = [process.env.FRONTEND_URL_PRODUCTION].filter(Boolean);
 
   app.enableCors({
-    origin: ['https://find-job-eight.vercel.app'],
+    origin: ['http://find-job-eight.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
     credentials: true,
   });
