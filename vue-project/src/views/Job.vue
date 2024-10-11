@@ -97,7 +97,7 @@ onMounted(async () => {
           <div class="bg-gray-800 p-6 rounded-lg shadow-lg mt-6">
             <h3 class="text-xl font-bold mb-6 text-white">Manage Job</h3>
             <RouterLink
-              :to="`/jobs/edit/${state.job._id}`"
+              :to="`/job/edit/${state.job._id}`"
               class="bg-blue-600 hover:bg-blue-500 text-white text-center font-bold py-2 px-4 rounded-full w-full block mt-4"
             >
               Edit Job

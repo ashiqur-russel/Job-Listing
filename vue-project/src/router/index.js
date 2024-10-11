@@ -32,7 +32,7 @@ const router = createRouter({
       component: AddJob,
     },
     {
-      path: "/jobs/edit/:id",
+      path: "/job/edit/:id",
       name: "edit-job",
       component: EditJob,
     },
