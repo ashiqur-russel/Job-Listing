@@ -47,13 +47,6 @@ export class AuthService {
     };
   }
 
-  async storeRefreshToken(token: string, userId: mongoose.Types.ObjectId) {
-    const expireDate = new Date();
-    expireDate.setDate(expireDate.getDate() + 3);
-
-    await this.RefreshTokenModel.create({ token, userId, expireDate });
-  }
-
   async refreshTokens(refreshToken: string) {
     const token = await this.RefreshTokenModel.findOneAndDelete({
       token: refreshToken,
@@ -75,5 +68,22 @@ export class AuthService {
     await this.storeRefreshToken(refreshToken, userId);
 
     return { accessToken, refreshToken };
+  }
+
+  async storeRefreshToken(token: string, userId: mongoose.Types.ObjectId) {
+    const expireDate = new Date();
+    expireDate.setDate(expireDate.getDate() + 3);
+
+    const refreshToken = await this.RefreshTokenModel.findOne({ userId });
+    console.log(refreshToken);
+
+    if (!refreshToken || null) {
+      await this.RefreshTokenModel.create({ expireDate, token, userId });
+    }
+    await this.RefreshTokenModel.findOneAndUpdate(
+      { userId },
+      { $set: { expireDate, token } },
+      { upsert: true },
+    );
   }
 }
