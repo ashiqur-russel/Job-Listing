@@ -13,6 +13,7 @@ async function bootstrap() {
   const allowedOrigins = [
     'http://localhost:3000',
     'https://find-job-eight.vercel.app',
+    '*',
   ].filter(Boolean);
 
   app.use(
@@ -25,7 +26,6 @@ async function bootstrap() {
         }
       },
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-      credentials: true,
       allowedHeaders: 'Content-Type, Authorization',
     }),
   );
