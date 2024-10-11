@@ -16,7 +16,7 @@ async function bootstrap() {
   ];
 
   app.enableCors({
-    origin: 'https://find-job-eight.vercel.app',
+    origin: allowedOrigins,
     methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
     credentials: true,
   });
