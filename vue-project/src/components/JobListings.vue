@@ -20,6 +20,8 @@ const state = reactive({
 onMounted(async () => {
   try {
     const response = await axios.get("jobs");
+    console.log(axios);
+    console.log(response);
     state.jobs = response.data;
   } catch (error) {
     console.error("Error while loading data:", error);
