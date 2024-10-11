@@ -13,21 +13,13 @@ async function bootstrap() {
     'http://localhost:3000',
     'https://find-job-eight.vercel.app',
     '*',
-  ].filter(Boolean);
+  ];
 
-  app.use(
-    cors({
-      origin: (origin, callback) => {
-        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-          callback(null, true);
-        } else {
-          callback(new Error('Not allowed by CORS'));
-        }
-      },
-      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-      allowedHeaders: 'Content-Type, Authorization',
-    }),
-  );
+  app.enableCors({
+    origin: allowedOrigins,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    allowedHeaders: 'Content-Type, Authorization',
+  });
 
   // global validation
   app.useGlobalPipes(new ValidationPipe());
