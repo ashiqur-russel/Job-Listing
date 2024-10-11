@@ -27,12 +27,14 @@ export class JobController {
   @Get()
   getAllJobs() {
     console.info('Accessing `/jobs`');
+    console.log('get all jobs');
     return this.jobsService.getAllJobs();
   }
 
   @Get(':id')
   getJobById(@Param('id') id: string): Promise<JobDocument> {
     console.info('Accessing `/jobs/:id`');
+    console.log('get job by id:', id);
 
     return this.jobsService.getJobById(id);
   }
@@ -43,6 +45,7 @@ export class JobController {
     @Body() updateJobDto: UpdateJobDto,
   ): Promise<JobDocument> {
     console.info("Accessing '/jobs/edit/:id'");
+    console.log('update job by id:', id);
 
     const isValidId = mongoose.Types.ObjectId.isValid(id);
     if (!isValidId)
@@ -60,6 +63,7 @@ export class JobController {
   @Delete(':id')
   async deleteUserbyId(@Param('id') id: string) {
     console.info("Accessing '/jobs/delete/:id'");
+    console.log('delete job by id:', id);
 
     const isValidId = mongoose.Types.ObjectId.isValid(id);
     if (!isValidId) {
