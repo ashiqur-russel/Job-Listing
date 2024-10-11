@@ -11,8 +11,8 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
   const allowedOrigins = [
-    process.env.FRONTEND_URL,
-    process.env.FRONTEND_URL_PRODUCTION,
+    'http://localhost:3000',
+    'https://find-job-eight.vercel.app/',
   ].filter(Boolean);
 
   app.use(
