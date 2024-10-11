@@ -12,7 +12,7 @@ async function bootstrap() {
 
   const allowedOrigins = [
     'http://localhost:3000',
-    'https://find-job-eight.vercel.app/',
+    'https://find-job-eight.vercel.app',
   ].filter(Boolean);
 
   app.use(
