@@ -7,7 +7,7 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 dotenv.config();
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  const app = await NestFactory.create(AppModule);
 
   const allowedOrigins = [
     'http://localhost:3000',
@@ -16,10 +16,9 @@ async function bootstrap() {
   ];
 
   app.enableCors({
-    origin: allowedOrigins,
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    origin: 'https://find-job-eight.vercel.app',
+    methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
     credentials: true,
-    allowedHeaders: 'Content-Type, Authorization',
   });
 
   // global validation
