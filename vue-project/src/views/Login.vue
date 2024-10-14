@@ -1,5 +1,10 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { useStore, mapState } from "vuex";
+
+const store = useStore();
+
+const name = computed(() => store.state.auth.name);
 </script>
 
 <template>
@@ -8,7 +13,7 @@ import { ref } from "vue";
   >
     <div class="bg-white p-10 rounded-xl shadow-lg max-w-md w-full">
       <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">
-        Welcome Back
+        Welcome Back {{ name }}
       </h2>
 
       <form>

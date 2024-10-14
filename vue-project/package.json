@@ -16,7 +16,8 @@
     "primeicons": "^7.0.0",
     "vue": "^3.4.29",
     "vue-router": "^4.4.5",
-    "vue-spinner": "^1.0.4"
+    "vue-spinner": "^1.0.4",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",
