@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink, useRoute } from "vue-router";
+import Login from "@/views/Login.vue";
 
 const isActiveLink = (routePath) => {
   const route = useRoute();
@@ -58,10 +59,36 @@ const isActiveLink = (routePath) => {
                 ]"
                 >Add Job</RouterLink
               >
+              <RouterLink
+                @click="toggleLoginModal"
+                to="/login"
+                :class="[
+                  isActiveLink('/login') ? 'bg-green-900' : 'hover:bg-gray-400',
+                  'text-white',
+                  'rounded-md',
+                  'px-3',
+                  'py-2',
+                ]"
+                >Login</RouterLink
+              >
+              <RouterLink
+                to="/signup"
+                :class="[
+                  isActiveLink('/signup')
+                    ? 'bg-green-900'
+                    : 'hover:bg-gray-400',
+                  'text-white',
+                  'rounded-md',
+                  'px-3',
+                  'py-2',
+                ]"
+                >Signup</RouterLink
+              >
             </div>
           </div>
         </div>
       </div>
     </div>
   </nav>
+  <Login v-if="isLoginModalOpen"></Login>
 </template>

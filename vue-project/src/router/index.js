@@ -3,8 +3,10 @@ import EditJob from "@/views/EditJob.vue";
 import Home from "@/views/Home.vue";
 import Job from "@/views/Job.vue";
 import Jobs from "@/views/Jobs.vue";
+import Login from "@/views/Login.vue";
 
 import NotFound from "@/views/NotFound.vue";
+import SignUp from "@/views/SignUp.vue";
 
 import { createRouter, createWebHistory } from "vue-router";
 
@@ -40,6 +42,16 @@ const router = createRouter({
       path: "/:catchAll(.*)",
       name: "not-found",
       component: NotFound,
+    },
+    {
+      path: "/login",
+      name: "login",
+      component: Login,
+    },
+    {
+      path: "/signup",
+      name: "signup",
+      component: SignUp,
     },
   ],
 });
