@@ -78,7 +78,7 @@ In future releases, we plan to implement several key features and improvements:
 - ![Class Validator](https://img.shields.io/badge/Class%20Validator-0B7E3A?style=flat&logo=typescript&logoColor=white) **Class Validator**: A library to validate class properties for request payloads.
 - ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white) **Tailwind CSS**: A utility-first CSS framework for creating custom designs directly in your markup.
 
-## 🛠 Bugs
+## 🛠 Bugs (On production not in the development)
 - Editing issues on Live beacuse of Cors issue.
 - Adding new job is not possible for the same reason. 
 
