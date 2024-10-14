@@ -75,7 +75,6 @@ export class AuthService {
     expireDate.setDate(expireDate.getDate() + 3);
 
     const refreshToken = await this.RefreshTokenModel.findOne({ userId });
-    console.log(refreshToken);
 
     if (!refreshToken || null) {
       await this.RefreshTokenModel.create({ expireDate, token, userId });
